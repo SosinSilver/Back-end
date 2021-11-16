@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'rest_framework',
     'django_extensions',
+    'rest_framework_simplejwt',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,9 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # django-cors
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    # django-cors middleware settings
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
