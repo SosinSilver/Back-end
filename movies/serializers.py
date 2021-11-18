@@ -11,6 +11,13 @@ class MovieSerializer(serializers.ModelSerializer):
         read_only_fields = ('country',)
 
 
+class MovieListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = ('id', 'title', 'poster_path',)
+
+
 class CountrySerializer(serializers.ModelSerializer):
 
     class Meta:
