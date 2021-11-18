@@ -6,4 +6,6 @@ urlpatterns = [
     path('movies/<int:country_pk>', views.get_movies),
     path('recommend/', views.get_recommends),
     path('movie/<int:movie_pk>/', views.get_movie),
+
+    path('add/data/', views.add_data),
 ]

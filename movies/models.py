@@ -24,6 +24,8 @@ class Country(models.Model):
     thumbnail_title = models.CharField(max_length=128)
     thumbnail_content = models.TextField()
     capital = models.CharField(max_length=32)
+    lat = models.FloatField(null=True)
+    lng = models.FloatField(null=True)
     
     def __str__(self) -> str:
         return self.en_name
@@ -39,7 +41,7 @@ class Movie(models.Model):
     overview = models.TextField()
     genres = models.ManyToManyField(Genre, related_name='movies')
     actors = models.ManyToManyField(Actor, related_name='movies')
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='movies')
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='movies', null=True)
 
     def __str__(self) -> str:
         return self.title
