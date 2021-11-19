@@ -4,5 +4,4 @@ from django.conf import settings
 
 
 class User(AbstractUser):
-    pass
-
+    nickname = models.CharField(max_length=32, null=True)
