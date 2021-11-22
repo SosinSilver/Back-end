@@ -19,13 +19,15 @@ class Actor(models.Model):
 class Country(models.Model):
     kr_name = models.CharField(max_length=32)
     en_name = models.CharField(max_length=32)
-    flag = models.URLField()
-    thumbnail = models.URLField()
+    flag = models.URLField(max_length=256)
+    thumbnail = models.URLField(max_length=300)
     thumbnail_title = models.CharField(max_length=128)
     thumbnail_content = models.TextField()
     capital = models.CharField(max_length=32)
+    capital_kr = models.CharField(max_length=16)
     lat = models.FloatField(null=True)
     lng = models.FloatField(null=True)
+    utc = models.SmallIntegerField()
     
     def __str__(self) -> str:
         return self.en_name
@@ -53,4 +55,4 @@ class Vote(models.Model):
     vote_score = models.SmallIntegerField()
 
     def __str__(self) -> str:
-        return self.vote_score
+        return f'{self.user.nickname} {self.movie.title} {self.vote_score}'
