@@ -74,7 +74,9 @@ def vote_movie(request):
 @api_view(['GET'])
 def get_recommends(request):
     page_num = request.GET.get('page')
-    vote_average = request.user.vote.aggregate(vote_average=Avg('vote_score'))['vote_average']
+    # 없을 때 기본 값
+    vote_average = 4 if not request.user.vote.all() \
+                    else request.user.vote.aggregate(vote_average=Avg('vote_score'))['vote_average']
 
     min_vote_average = vote_average-1
     max_vote_average = vote_average+1
