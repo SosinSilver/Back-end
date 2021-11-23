@@ -24,3 +24,12 @@ def signup(request):
         user.set_password(password)
         user.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+def get_nickname(request):
+    context = {
+        'nickname': request.user.nickname,
+        'id': request.user.pk
+    }
+    return Response(context, status=status.HTTP_200_OK)

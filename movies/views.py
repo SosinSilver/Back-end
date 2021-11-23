@@ -57,7 +57,7 @@ def vote_movie(request):
             movie.vote_average = total_score/movie.vote_count
             movie.save()
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
     else:
         serializer = VoteSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):

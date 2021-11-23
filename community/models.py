@@ -23,3 +23,13 @@ class Comment(models.Model):
 
     def __str__(self) -> str:
         return self.content
+
+    def get_data(self):
+        data = {
+            'pk': self.pk,
+            'nickname': self.user.nickname,
+            'user': self.user.pk,
+            'article': self.article.pk,
+            'content': self.content,
+        }
+        return data
