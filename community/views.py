@@ -34,15 +34,25 @@ def get_list(request):
 
     return HttpResponse(data, content_type='application/json')
 
-
-
 @api_view(['POST'])
 def article_create(request):
     serializer = ArticleSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
- 
+
+@api_view(['PUT'])
+def article_update(request, article_pk):
+    print(Article.objects.get(pk=article_pk))
+    article = get_object_or_404(Article, pk=article_pk)
+    serializer = ArticleSerializer(instance=article, data=request.data)
+    if request.user == article.user:
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        Response(status=status.HTTP_401_UNAUTHORIZED)
+     
 
 @api_view(['POST'])
 def comment_create(request, article_pk):
