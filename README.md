@@ -161,6 +161,7 @@ python manage.py runserver
 
 - [Google Map API](https://developers.google.com/maps) - Build awesome apps with Google’s knowledge of the real world
 - [Bootstrap](https://getbootstrap.com/) - Extensive list of components and Bundled Javascript plugins.
+- [openweathermap](https://openweathermap.org/) - A scientific yet simple approach to weather forecast.
 
 
 
