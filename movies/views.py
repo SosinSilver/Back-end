@@ -7,11 +7,16 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework import serializers, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.decorators import authentication_classes, permission_classes
 
 from .models import Country, Genre, Movie, Actor, Vote
 from .serializers import CountrySerializer, MovieListSerializer, MovieSerializer, VoteSerializer
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def get_countries(request):
     country_objs = Country.objects.all()
     serializer = CountrySerializer(country_objs, many=True)
@@ -19,6 +24,8 @@ def get_countries(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def get_country(request, country_pk):
     country_obj = get_object_or_404(Country, pk=country_pk)
     serializer = CountrySerializer(country_obj)
@@ -27,6 +34,8 @@ def get_country(request, country_pk):
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def get_movies(request, country_pk):
     movie_objs = get_list_or_404(Movie, country=country_pk)
     serializer = MovieListSerializer(movie_objs, many=True)
@@ -41,6 +50,8 @@ def get_movies(request, country_pk):
     return Response(serializer.data)
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def vote_movie(request):
     movie = get_object_or_404(Movie, pk=request.data.get('movie'))
 
@@ -72,6 +83,8 @@ def vote_movie(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def get_recommends(request):
     page_num = request.GET.get('page')
     # 없을 때 기본 값
@@ -94,6 +107,8 @@ def get_recommends(request):
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def get_movie(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = MovieSerializer(movie)

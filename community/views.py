@@ -8,9 +8,14 @@ from django.core import serializers as django_serializer
 from .serializers import ArticleSerializer, CommentSerializer
 from django.core.paginator import Paginator
 import json
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.decorators import authentication_classes, permission_classes
 
 
 @api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def get_list(request):
     page_num = request.GET.get('page')
     article_objs = Article.objects.order_by('-pk')
@@ -35,13 +40,18 @@ def get_list(request):
     return HttpResponse(data, content_type='application/json')
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def article_create(request):
     serializer = ArticleSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 @api_view(['PUT'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def article_update(request, article_pk):
     print(Article.objects.get(pk=article_pk))
     article = get_object_or_404(Article, pk=article_pk)
@@ -55,6 +65,8 @@ def article_update(request, article_pk):
      
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def comment_create(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
     serializer = CommentSerializer(data=request.data)
@@ -66,6 +78,8 @@ def comment_create(request, article_pk):
 
 
 @api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def like(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
     if article.like_users.filter(pk=request.user.pk).exists():
@@ -77,6 +91,8 @@ def like(request, article_pk):
 
 
 @api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def delete_article(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
     if request.user == article.user:
@@ -87,6 +103,8 @@ def delete_article(request, article_pk):
 
 
 @api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
 def comment_delete(request, comment_pk):
     comment = get_object_or_404(Comment, pk=comment_pk)
     if request.user == comment.user:
