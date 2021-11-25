@@ -1,7 +1,5 @@
 ![logo](./readme/image/logo.png)
 # [Movie Trip] 영화 커뮤니티 앱 🎞
-**SSAFY Final Project**
-
 [>>> 무비트립 접속하기 <<<](https://movietrip.click)
 
 ------
@@ -12,43 +10,43 @@
 
 ### 1. 튜토리얼
 
-![image1](./readme/image/1. Tutorial.gif)
+![image1](./readme/image/1.Tutorial.gif)
 
 
 
 ### 2. 로그인/회원가입
 
-![image2](./readme/image/2. Login.gif)
+![image2](./readme/image/2.Login.gif)
 
 
 
 ### 3. 구글 지도
 
-![image3](./readme/image/3. GoogleMap.gif)
+![image3](./readme/image/3.GoogleMap.gif)
 
 
 
 ### 4. 국가 정보 / 평점 남기기
 
-![image4](./readme/image/4. Country.gif)
+![image4](./readme/image/4.Country.gif)
 
 
 
 ### 5. 영화 추천
 
-![image5](./readme/image/5. Recommend.gif)
+![image5](./readme/image/5.Recommend.gif)
 
 
 
 ### 6. 커뮤니티 글 작성
 
-![image6](./readme/image/6. Community Write.gif)
+![image6](./readme/image/6.CommunityWrite.gif)
 
 
 
 ### 7. 커뮤니티 댓글 작성
 
-![image7](./readme/image/7. Like Comment.gif)
+![image7](./readme/image/7.LikeComment.gif)
 
 
 
@@ -91,70 +89,6 @@
 <a href="https://aws.amazon.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="40" height="40"/> </a> 
 <a href="https://www.nginx.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="nginx" width="40" height="40"/> </a>
 </p>
-
-
-<!-- for GitLab -->
-
-## 설치🛠
-### 1. Frontend
-
-- Clone Project
-```
-git clone https://lab.ssafy.com/swsilver95/final-pjt-front.git
-```
-
-- Project setup
-```
-cd final-pjt-front
-npm install
-```
-
-- run frontend server
-```
-npm run serve
-```
-
-
-
-### 2. Backend
-
-- Clone Project
-```
-git clone https://lab.ssafy.com/swsilver95/final-pjt-back.git
-```
-
-- Project setup
-```
-cd final-pjt-back
-pip install -r requiements.txt
-```
-
-- run backend server
-```
-python manage.py runserver
-```
-
-
-
-## Project Vue 구조
-
-![vue](./readme/image/vue.png)
-
-
-
-## ERD diagram
-
-**Community + Movie**
-![erd](./readme/image/erd.png)
-
-
-
-## Django API 구조
-
-![drf](./readme/image/swagger.png)
-
-<!-- end gitlab -->
-
 
 
 ## Built with
